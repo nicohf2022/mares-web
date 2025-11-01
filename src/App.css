@@ -1,0 +1,71 @@
+/* ===== Global safety (evita desbordes por elementos) ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* evita overflow horizontal globalmente */
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  
+}
+
+/* asegúrate que contenedores no usen 100vw (incluye scrollbar) */
+
+
+.cardsWrapper,
+.nosotros-container,
+.navbar-root,
+.navbar-appbar {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  
+}
+
+/* imágenes responsivas (evita que se salgan) */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* evita que el hover-scale haga aparecer scroll lateral */
+.cardsWrapper {
+  overflow-x: hidden; /* evita scroll horizontal provocado por transform */
+}
+
+/* tarjetas: control sobre transform para que no desborden */
+.card {
+  will-change: transform;
+  transform-origin: center;
+}
+
+/* iOS safe-area (evita espacios laterales en iPhone con notch) */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* temporal: elimina scrollbars webkit si quieres probar rápidamente */
+body::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+:root {
+  /* Tamaños de títulos (escala fluida) */
+  --font-size-hero-title: clamp(1.5rem, 4vw, 3rem);
+  --font-size-hero-subtitle: clamp(1rem, 2.5vw, 2rem);
+  --font-size-card-title: clamp(0.9rem, 2vw, 1.2rem);
+
+  /* Márgenes para navbar y footer */
+  --margin-navbar: 3rem; /* Ajusta según altura real de tu navbar */
+  --margin-footer: 3rem; /* Ajusta según altura real de tu footer */
+}
+

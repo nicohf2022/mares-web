@@ -1,0 +1,149 @@
+/* Contenedor raíz */
+.navbar-root {
+  display: flex;
+}
+
+/* Appbar transparente */
+.navbar-appbar {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Toolbar principal */
+.navbar-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Logo principal */
+.logo-btn {
+  padding: 0 !important;
+}
+.logo-img {
+  max-width: 9rem;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 456 / 316;
+}
+
+
+/* 🔹 En móviles achicamos el logo */
+@media (max-width: 600px) {
+  .logo-img {
+    width: 6rem;
+  }
+}
+
+/* Icono hamburguesa */
+.menu-icon {
+  display: block !important;
+  color: #fff !important; 
+}
+
+.menu-icon-size {
+  font-size: 28px !important;
+}
+
+@media (min-width: 600px) {
+  .menu-icon-size {
+    font-size: 32px !important;
+  }
+}
+
+@media (min-width: 900px) {
+  .menu-icon {
+    display: none !important;
+  }
+  .menu-icon-size {
+    font-size: 35px !important;
+  }
+}
+
+/* Navegación desktop */
+.desktop-nav {
+  display: none;
+  gap: 15px;
+}
+
+@media (min-width: 900px) {
+  .desktop-nav {
+    display: flex;
+  }
+}
+
+.nav-link {
+  color: #fff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: normal !important;
+  text-transform: none !important;
+  border-radius: 0 !important;
+  text-shadow: 1px 1px 2px black, 0 0 10px white, 0 0 10px white;
+  font-size: 1rem !important;
+}
+
+@media (min-width: 1200px) {
+  .nav-link {
+    font-size: 1.1rem !important;
+  }
+}
+
+.nav-link.active {
+  color: rgb(0, 204, 229) !important;
+  font-weight: bold !important;
+  border-bottom: 2px solid rgb(0, 204, 229);
+}
+
+/* Drawer móvil */
+.mobile-drawer .MuiDrawer-paper {
+  width: 70% !important;
+  background-color: #1e1e1e !important;
+  color: #fff !important;
+}
+
+@media (min-width: 600px) {
+  .mobile-drawer .MuiDrawer-paper {
+    width: 250px !important;
+  }
+}
+
+.drawer-container {
+  text-align: center;
+  background-color: #333;
+  height: 100%;
+}
+
+.drawer-logo {
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  width: 100%;   
+  height: 5rem; /* altura fija del contenedor */
+}
+
+.drawer-img {
+  height: 100%;
+  width: auto; /* ✅ ahora mantiene proporción dentro del área */
+  object-fit: contain;
+}
+
+.drawer-link {
+  color: #fff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 0.9rem !important;
+  text-transform: none !important;
+  font-weight: normal !important;
+  padding: 12px 0 !important;
+}
+
+@media (min-width: 600px) {
+  .drawer-link {
+    font-size: 1rem !important;
+  }
+}
+
+.drawer-link.active {
+  color: rgb(0, 204, 229) !important;
+  font-weight: bold !important;
+  border-bottom: 2px solid rgb(0, 204, 229);
+}

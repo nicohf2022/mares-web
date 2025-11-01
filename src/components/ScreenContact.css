@@ -1,0 +1,208 @@
+/* ================================
+   🔹 CONTENEDOR PRINCIPAL
+   ================================ */
+.hero-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* asegura que siempre ocupe toda la pantalla */
+  overflow: hidden; /* evita desbordes visuales */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+   background: rgba(0, 0, 0, 0.6);
+}
+
+/* ================================
+   🔹 VIDEO DE FONDO
+   ================================ */
+.hero-video {
+  position: absolute; /* o fixed si querés que cubra toda la app */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  
+ 
+}
+
+/* ================================
+   🔹 OVERLAY PRINCIPAL
+   ================================ */
+.contact-overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  padding: 120px 70px 0 70px;
+  color: white;
+  gap: 40px;
+  box-sizing: border-box;
+  
+}
+
+/* ================================
+   🔹 SECCIÓN IZQUIERDA (texto + redes)
+   ================================ */
+.left-section {
+  flex: 1;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.section-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  line-height: 1.5;
+  text-shadow: 1px 1px 2px black;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 0.3rem;
+  backdrop-filter: blur(5px);
+}
+
+/* Iconos sociales */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.icon {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  cursor: pointer;
+  color: #b2adad;
+  transition: color 0.3s ease;
+}
+
+.icon.instagram:hover { color: #E1306C; }
+.icon.whatsapp:hover { color: #25D366; }
+.icon.facebook:hover { color: #1877F2; }
+.icon:focus {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ================================
+   🔹 SECCIÓN DERECHA (formulario)
+   ================================ */
+.right-section {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.right-section form,
+.right-section .contact-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ================================
+   🔹 TABLETS
+   ================================ */
+@media (max-width: 1024px) {
+  .contact-overlay {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 40px;
+    gap: 50px;
+  }
+
+  .left-section,
+  .right-section {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .right-section {
+    width: 100%;
+    min-height: 60vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+
+/* ================================
+   🔹 MÓVILES
+   ================================ */
+@media (max-width: 600px) {
+  .hero-container {
+    min-height: 100vh; /* se mantiene altura completa */
+  }
+
+  .contact-overlay {
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 40px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    padding-top: 3rem;
+  }
+
+  .description {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .social-icons {
+    display: none; /* se ocultan redes en móviles */
+  }
+
+  .icon {
+    font-size: 2.5rem;
+  }
+}
+
+/* ================================
+   🔹 IPAD ESPECÍFICO (portrait)
+   ================================ */
+@media screen and (width: 820px) and (height: 1180px) {
+  .right-section,
+  .right-section form,
+  .right-section .contact-form {
+    min-height: 65vh;
+  }
+
+  .contact-overlay {
+    padding-top: 30px;
+  }
+}
+
+/* ================================
+   🔹 IPAD ESPECÍFICO (landscape)
+   ================================ */
+@media screen and (width: 1180px) and (height: 820px) {
+  .right-section,
+  .right-section form,
+  .right-section .contact-form {
+    min-height: 55vh;
+  }
+
+  .contact-overlay {
+    padding-top: 30px;
+  }
+}

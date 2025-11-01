@@ -1,0 +1,48 @@
+const fs = require("fs");
+const path = require("path");
+const sharp = require("sharp");
+
+const images = [
+  "src/assets/historia1.webp",
+  "src/assets/PadreEnzo.webp",
+  "src/assets/historia3.webp",
+  "src/assets/historia2.webp",
+  "src/assets/logoMares.webp"
+];
+
+(async () => {
+  for (const imagePath of images) {
+    const input = path.resolve(imagePath);
+
+    if (!fs.existsSync(input)) {
+      console.warn("⚠️ No se encontró:", imagePath);
+      continue;
+    }
+
+    const ext = path.extname(input);
+    const base = path.basename(input, ext);
+    const dir = path.dirname(input);
+
+    if (base.toLowerCase().includes("logomares")) {
+      await sharp(input)
+        .resize(192, 133, { fit: "inside" })
+        .webp({ quality: 75 })
+        .toFile(path.join(dir, `${base}@1x.webp`));
+
+      await sharp(input)
+        .resize(384, 266, { fit: "inside" })
+        .webp({ quality: 75 })
+        .toFile(path.join(dir, `${base}@2x.webp`));
+
+      console.log("✅ Optimizado logo:", base);
+      continue;
+    }
+
+    await sharp(input)
+      .resize({ width: 1200, withoutEnlargement: true })
+      .webp({ quality: 70 })
+      .toFile(path.join(dir, `${base}.opt.webp`));
+
+    console.log("✅ Optimizada imagen:", base);
+  }
+})();

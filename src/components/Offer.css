@@ -1,0 +1,226 @@
+/* Contenedor principal con video de fondo */
+.offerContainer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  overflow: visible;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.offerContainer video {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Contenido principal */
+.offerContent {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh; /* asegura que el contenido tenga altura completa */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* 🔁 igual que nosotros-overlay */
+  padding: 30px 20px; /* 🔁 igual que nosotros-overlay */
+  
+  box-sizing: border-box;
+  overflow-y: auto; /* 🔁 permite scroll si el contenido es largo */
+}
+
+  .offer-overlay {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+}
+
+/* Subtítulo */
+.offerSubtitle {
+  color: white;
+  text-align: center;
+  font-size: clamp(1rem, 2.5vw, 2rem);
+}
+
+/* Contenedor de tarjetas */
+.cardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(16px, 2vw, 24px);
+  padding: clamp(16px, 2vw, 20px);
+  box-sizing: border-box;
+}
+
+/* Tarjeta individual */
+/* ===== TARJETA INDIVIDUAL ===== */
+.card {
+  position: relative;
+  width: clamp(220px, 25vw, 320px);
+  aspect-ratio: 9 / 16; /* ✅ mantiene la proporción original del archivo */
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  text-align: center;
+  transition: transform 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  max-height: 420px; /* 🔹 limita la altura máxima */
+}
+
+.card:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+/* ===== IMAGEN DENTRO DE LA TARJETA ===== */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ✅ recorta para llenar */
+  border-radius: 15px;
+  display: block;
+  aspect-ratio: 9 / 16; /* ✅ reserva el espacio antes de cargar */
+}
+
+/* ===== TÍTULO DENTRO DE LA TARJETA ===== */
+.cardTitle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.6) 100%);
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+}
+/* =========================
+   📱 AJUSTES RESPONSIVOS
+========================= */
+
+/* Laptop media */
+@media (max-width: 1280px) {
+  .cardsWrapper {
+    justify-content: center;
+  }
+
+  .card {
+    width: clamp(220px, 28vw, 340px);
+    height: clamp(280px, 35vw, 420px);
+  }
+
+  
+}
+
+/* 🧩 iPad vertical y tablets medianas (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .cardsWrapper {
+    gap: 32px;
+  }
+
+  .card {
+    width: clamp(280px, 40vw, 420px);
+    height: clamp(320px, 45vw, 480px);
+  }
+
+  .heroSubtitle {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    padding: 0 1rem;
+  }
+}
+
+/* 🧭 iPad Pro y resoluciones grandes tipo 912x1368 */
+@media (min-width: 912px) and (max-width: 1368px) {
+  .card {
+    width: clamp(300px, 38vw, 460px);
+    height: clamp(350px, 45vw, 520px);
+  }
+}
+
+/* 📱 Smartphones */
+@media (max-width: 767px) {
+  .cardsWrapper {
+     flex-direction: column;
+    align-items: center;
+    justify-content: center; /* ✅ centra verticalmente si hay espacio */
+    gap: 20px;
+    width: 100%;             /* ✅ asegura que el flex ocupe todo el ancho */
+    margin: 0 auto; 
+  }
+
+  .card {
+    width: 85%;
+    height: auto;
+    margin: 0 auto;
+
+  }
+
+  .card img {
+    height: auto;
+  }
+
+  .heroSubtitle {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .cardsWrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .card {
+    width: 85%;
+    aspect-ratio: 9 / 16; /* ✅ mantiene proporción en móviles */
+  }
+}
+
+/* ===== iPad vertical / tablets medianas ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .cardsWrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .card {
+    width: clamp(260px, 35vw, 320px);
+    aspect-ratio: 3 / 4; /* ✅ menos alto, más equilibrado */
+    max-height: 380px; /* ✅ evita que crezcan demasiado */
+  }
+
+  .card img {
+    object-fit: cover;
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* ===== iPad Pro horizontal o laptops pequeñas ===== */
+@media (min-width: 1025px) and (max-width: 1368px) {
+  .card {
+    width: clamp(280px, 30vw, 340px);
+    aspect-ratio: 3 / 4;
+    max-height: 420px;
+  }
+}

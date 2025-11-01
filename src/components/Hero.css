@@ -1,0 +1,275 @@
+/* === CONTENEDOR PRINCIPAL === */
+.hero-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* === VIDEO DE FONDO === */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* === OVERLAY OSCURO SOBRE EL VIDEO === */
+.hero-overlay {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 20px;
+  overflow-y: auto;
+}
+
+/* === TITULO PRINCIPAL === */
+
+/* === CONTENIDO PRINCIPAL === */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1250px;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Fallback manual para Safari en iPad */
+.hero-content>* {
+  margin: 0;
+}
+
+/* Aplica margen superior e izquierdo a cada elemento, simulando el gap */
+.hero-content>*+* {
+  margin-left: 2rem;
+}
+
+/* Cuando en móviles se cambia a columna, quitamos el margen horizontal */
+@media (max-width: 768px) {
+  .hero-content>*+* {
+    margin-left: 0;
+  }
+}
+
+/* === CAROUSEL DE IMÁGENES === */
+.hero-carousel {
+  flex: 1 1 400px;
+  position: relative;
+  max-width: 600px;
+  min-width: 280px;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.carousel-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-height: 70vh;
+  border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  object-fit: cover;
+  transition: opacity 0.8s ease-in-out;
+  opacity: 0;
+  transform: scale(1);
+}
+
+.carousel-image.active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* === TEXTO AL COSTADO === */
+.hero-text {
+  flex: 1 1 300px;
+  min-width: 280px;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  top: 25px;
+}
+
+.hero-text h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.3rem;
+  color: white;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.hero-text p {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: white;
+  font-family: Poppins, sans-serif;
+  text-shadow: 1px 1px 2px black;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 0.3rem;
+  backdrop-filter: blur(5px);
+}
+
+.hero-text p:last-of-type {
+  margin-bottom: 2rem;
+}
+
+/* === BOTÓN === */
+.hero-button {
+  padding: 0.8rem 1.6rem;
+  background-color: rgb(0, 204, 229);
+  color: black;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+
+.hero-button:hover {
+  background-color: rgb(0, 180, 205);
+}
+
+.hero-button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+/* === SUBTÍTULO PEQUEÑO === */
+.hero-heading {
+  text-align: center;
+  color: white;
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px black;
+}
+
+/* === MEDIA QUERIES RESPONSIVE === */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1.5rem;
+  }
+
+  /* ✅ reorganiza el contenido a columna */
+  .hero-content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-carousel {
+    order: 1;
+    /* carrusel arriba */
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .hero-text {
+    order: 2;
+    /* texto debajo */
+    width: 90%;
+    top: 0;
+    padding: 1rem;
+  }
+
+  .carousel-image {
+    max-height: 50vh;
+  }
+}
+
+/* Celulares grandes */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-button {
+    font-size: 1rem;
+  }
+
+  .hero-carousel {
+    width: calc(100% - 2rem);
+    /* deja 1rem de margen a cada lado */
+    max-width: 450px;
+    /* limita para que no crezca demasiado */
+    height: 45vh;
+    /* altura más pequeña en móviles */
+  }
+}
+
+/* Celulares chicos */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .carousel-image {
+    max-height: 45vh;
+  }
+
+  .hero-carousel {
+    width: calc(100% - 2rem);
+    /* margen lateral igual */
+    max-width: 400px;
+    height: 40vh;
+  }
+}
+
+.carousel-image.lcp {
+  opacity: 1 !important;
+  transform: scale(1.05);
+  transition: none; /* evita bloqueos en el primer render */
+}
