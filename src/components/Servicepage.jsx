@@ -98,22 +98,23 @@ const ServicePage = () => {
 
   return (
     <div className="service-container">
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="none"
-        poster="/media/videoedificio-poster.webp"
-        className="service-video"
-        title="Video de fondo mostrando obras y maquinaria de Mares Construcción"
-        aria-label="Video de presentación de Mares"
+ <div
+        style={{
+          backgroundImage: "url('/media/videoedificio-poster.webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: -2,
        
-      >
-        <source src="/media/videoedificio-recortado.webm" type="video/webm" />
-        <source src="/media/videoedificio-recortado.mp4" type="video/mp4" />
-        Tu navegador no soporta videos en HTML5.
-      </video>
+        }}
+        
+      />
+
       <div className="service-overlay">
         <section className='section-wrapper'>
           <h1 className="section-title">{service.title}</h1>

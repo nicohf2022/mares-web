@@ -34,20 +34,22 @@ const Nosotros = () => {
 
     return (
         <div className="nosotros-container">
-            {/* Video optimizado */}
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                poster="/media/videoedificio-poster.webp"
-                className="nosotros-video"
-            >
-                <source src="/media/videoedificio-optimizado.webm" type="video/webm" />
-                <source src="/media/videoedificio-recortado.mp4" type="video/mp4" />
-                Tu navegador no soporta videos en HTML5.
-            </video>
+          <div
+                className="nosotros-background"
+                style={{
+                    backgroundImage: "url('/media/videoedificio-poster.webp')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    zIndex: -2,
+                }}
+                
+            ></div>
+           
 
             <div className="nosotros-overlay">
                 <section className='section-wrapper'>

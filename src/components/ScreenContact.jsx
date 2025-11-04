@@ -5,31 +5,23 @@ import './ScreenContact.css'
 import './global.css';
 const ScreenContact = () => {
     return (
-        <div className="hero-container">
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="none"
-                poster="/media/videoedificio-poster.webp"
-                className="hero-video"
-                aria-label='Video de fondo mostrando edificios de construccion'
+        <div className="contact-container">
+            <div
                 style={{
+                    backgroundImage: "url('/media/videoedificio-poster.webp')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
                     position: "absolute",
                     top: 0,
                     left: 0,
                     width: "100%",
                     height: "100%",
-                    objectFit: "cover",
                     zIndex: -2,
-            
+                   
                 }}
-            >
-                <source src="/media/videoedificio-recortado.webm" type="video/webm" />
-                <source src="/media/videoedificio-recortado.mp4" type="video/mp4" />
-                Tu navegador no soporta videos en HTML5.
-            </video>
+               
+            />
 
             <div className="contact-overlay">
                 {/* Sección izquierda */}
@@ -45,7 +37,7 @@ const ScreenContact = () => {
                         <a href="https://www.instagram.com/construccionmares/" target="_blank" rel="noopener noreferrer" aria-label='Visitar Instagram de Mares Construcciones'>
                             <FaInstagram className="icon instagram" />
                         </a>
-                        <a href="https://wa.me/59894258767" target="_blank" rel="noopener noreferrer" aria-label='WhatsApp de Mares Construcciones'>
+                        <a href="https://wa.me/59894358767" target="_blank" rel="noopener noreferrer" aria-label='WhatsApp de Mares Construcciones'>
                             <FaWhatsapp className="icon whatsapp" />
                         </a>
                         <a href="https://tinyurl.com/55ksvayp" target="_blank" rel="noopener noreferrer" aria-label='Visitar Facebook de Mares Construcciones'>

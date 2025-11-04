@@ -1,6 +1,0 @@
-# Permitir todos los robots
-User-agent: *
-Disallow:
-
-# Sitemap (opcional pero recomendado)
-Sitemap: https://tu-dominio.com/sitemap.xml

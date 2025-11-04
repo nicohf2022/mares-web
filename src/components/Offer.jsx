@@ -90,20 +90,22 @@ const Offer = () => {
     <div>
       <div className="offerContainer">
         {/* 🎥 Video de fondo */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          poster="/media/videoedificio-poster.webp"
-          aria-label="Video de fondo mostrando edificios de construcción"
-        >
-          <source src="/media/videoedificio-recortado.webm" type="video/webm" />
-          <source src="/media/videoedificio-recortado.mp4" type="video/mp4" />
-          Tu navegador no soporta videos en HTML5.
-        </video>
-
+         <div
+          style={{
+            backgroundImage: "url('/media/videoedificio-poster.webp')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: -2,
+           
+          }}
+          
+        />
         {/* 🧱 Contenido principal */}
         <div className="offerContent">
           <section className="section-wrapper">

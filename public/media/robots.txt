@@ -1,0 +1,6 @@
+# Permitir a todos los robots acceder al sitio
+User-agent: *
+Allow: /
+
+# Sitemap del sitio
+Sitemap: https://maresconstruccion.uy/sitemap.xml

@@ -29,7 +29,7 @@ const Footer = () => {
             <a href="https://tinyurl.com/55ksvayp" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de Facebook de Mares Construcción">
               <FaFacebook />
             </a>
-            <a href="https://wa.me/59894258767" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Mares Construcción">
+            <a href="https://wa.me/59894358767" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Mares Construcción">
               <FaWhatsapp />
             </a>
             <a href="https://www.linkedin.com/company/mares-construcción-maquinarias/" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de Linkedin de Mares Construcción">

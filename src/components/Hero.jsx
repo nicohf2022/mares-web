@@ -6,14 +6,14 @@ import maresobreros from "../assets/maresobreros.webp";
 import pozo from "../assets/pozo.webp";
 import casaEnzo from "../assets/casaEnzo.webp";
 import isla from "../assets/isla.webp";
-import colocacionPileta from "../assets/colocacionPileta.webp";
+
 
 const images = [
   { src: maresobreros, alt: "Construcciones Maldonado" },
   { src: pozo, alt: "Servicio de tunelería Uruguay" },
   { src: casaEnzo, alt: "Reformas Maldonado" },
   { src: isla, alt: "Construcción de islas y centros comerciales Uruguay" },
-  { src: colocacionPileta, alt: "Instalación de piscinas Maldonado" },
+  
 ];
 
 const Hero = () => {
@@ -48,33 +48,24 @@ const Hero = () => {
   return (
     <main aria-label="Sección Hero de Mares" className="hero-container">
 
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="none"
-        poster="/media/videoedificio-poster.webp"
-        className="hero-video"
-        title="Video de fondo mostrando obras y maquinaria de Mares Construcción"
-        aria-label="Video de presentación de Mares"
+      <div
+        className="hero-background"
         style={{
+          backgroundImage: "url('/media/videoedificio-poster.webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           position: "absolute",
           top: 0,
           left: 0,
           width: "100%",
           height: "100%",
-          objectFit: "cover",
           zIndex: -2,
         }}
-      >
-        <source src="/media/videoedificio-recortado.webm" type="video/webm" />
-        <source src="/media/videoedificio-recortado.mp4" type="video/mp4" />
-        Tu navegador no soporta videos en HTML5.
-      </video>
+        
+      ></div>
 
       <div className="hero-overlay"></div>
-      <section class="section-wrapper">
+      <section className="section-wrapper">
 
         <h1 className="section-title" >Mares Construcción y Maquinarias </h1>
 
@@ -92,7 +83,7 @@ const Hero = () => {
               width="600"
               height="400"
               loading={index === 0 ? "eager" : "lazy"}
-              fetchpriority={index === 0 ? "high" : "auto"}
+              fetchPriority={index === 0 ? "high" : "auto"}
               decoding="async"
               className={`carousel-image ${index === currentIndex ? "active" : ""} ${index === 0 ? "lcp" : ""}`}
             />
@@ -108,7 +99,7 @@ const Hero = () => {
           <p>Nuestra trayectoria, junto con la honestidad que demostramos en cada trabajo, nos permite operar en todo Uruguay, ofreciendo servicios que se adaptan a las necesidades de cada empresa o profesional. Garantizamos un acompañamiento eficiente, tanto en proyectos por iniciar como en etapas de desarrollo.
           </p>
           <p>+25 años de experiencia, 100% clientes conformes</p>
-          <Link to="/ofrecemos" className="hero-button" aria-label=" Ir a la sección Serivicios">
+          <Link to="/ofrecemos" className="hero-button" >
             Nuestros Servicios
           </Link>
         </div>

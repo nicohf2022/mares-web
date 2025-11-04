@@ -1,7 +1,7 @@
 /* ================================
    🔹 CONTENEDOR PRINCIPAL
    ================================ */
-.hero-container {
+.contact-container {
   position: relative;
   width: 100%;
   min-height: 100vh; /* asegura que siempre ocupe toda la pantalla */
