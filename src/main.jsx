@@ -1,11 +1,10 @@
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 
-// 🔹 Carga diferida de la App completa
 const App = lazy(() => import("./App"));
 
-// 🔹 Loader inicial muy liviano (solo HTML + CSS, sin React pesado)
 const Loader = () => (
   <div
     style={{
@@ -28,8 +27,10 @@ const Loader = () => (
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Suspense fallback={<Loader />}>
-      <App />
-    </Suspense>
+    <BrowserRouter basename="/">
+      <Suspense fallback={<Loader />}>
+        <App />
+      </Suspense>
+    </BrowserRouter>
   </React.StrictMode>
 );

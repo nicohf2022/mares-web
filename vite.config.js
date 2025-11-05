@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 // 🧱 Configuración optimizada para Vercel y producción
 export default defineConfig({
   // 👇 Este valor es CRUCIAL para que las rutas y assets se sirvan correctamente en producción
-  base: './',
+  base: '/',
 
   plugins: [
     react(),
