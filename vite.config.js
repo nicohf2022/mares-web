@@ -2,20 +2,23 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-// 🧠 Configuración optimizada para producción y rendimiento
+// 🧱 Configuración optimizada para Vercel y producción
 export default defineConfig({
+  // 👇 Este valor es CRUCIAL para que las rutas y assets se sirvan correctamente en producción
+  base: './',
+
   plugins: [
     react(),
     tailwindcss(),
   ],
 
-  // ⚙️ Opciones de compilación y cacheo
+  // ⚙️ Opciones de compilación y optimización
   build: {
-    target: 'esnext', // genera JS moderno y más liviano
-    cssMinify: true,
-    minify: 'terser', // mejor compresión que esbuild
-    sourcemap: false,
-    chunkSizeWarningLimit: 600, // evita warnings falsos
+    target: 'esnext',             // genera JS moderno y más liviano
+    cssMinify: true,              // minifica el CSS
+    minify: 'terser',             // mejor compresión que esbuild
+    sourcemap: false,             // no genera mapas de código (reduce peso)
+    chunkSizeWarningLimit: 600,   // evita warnings falsos
     rollupOptions: {
       output: {
         manualChunks: {
@@ -33,7 +36,7 @@ export default defineConfig({
     include: ['react', 'react-dom', 'react-router-dom'],
   },
 
-  // 🌐 Recomendado para hosting tipo Netlify/Vercel
+  // 🌐 Configuración del servidor local
   server: {
     port: 5173,
     open: true,
