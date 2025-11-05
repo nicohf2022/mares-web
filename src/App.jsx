@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import "./components/global.css";
 
@@ -35,22 +35,22 @@ const Loading = () => (
 
 function App() {
   return (
-    <BrowserRouter>
-      {/* Un solo Suspense para toda la app */}
-      <Suspense fallback={<Loading />}>
-        <Navbar />
+    <Suspense fallback={<Loading />}>
+      <Navbar />
 
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="contacto" element={<ScreenContact />} />
-          <Route path="ofrecemos" element={<Offer />} />
-          <Route path="/servicio/:serviceId" element={<ServicePage />} />
-          <Route path="nosotros" element={<Nosotros />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route path="contacto" element={<ScreenContact />} />
+        <Route path="ofrecemos" element={<Offer />} />
+        <Route path="/servicio/:serviceId" element={<ServicePage />} />
+        <Route path="nosotros" element={<Nosotros />} />
 
-        <Footer />
-      </Suspense>
-    </BrowserRouter>
+        {/* Ruta fallback (para evitar pantallas blancas en URLs no válidas) */}
+        <Route path="*" element={<Hero />} />
+      </Routes>
+
+      <Footer />
+    </Suspense>
   );
 }
 
