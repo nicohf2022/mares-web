@@ -1,57 +1,70 @@
-import React, { Suspense, lazy } from "react";
-import { Routes, Route } from "react-router-dom";
-import "./App.css";
-import "./components/global.css";
+import { lazy, Suspense } from "react";
+import { Navigate, Route, Routes, useParams } from "react-router-dom";
+import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
+import ScrollManager from "./components/layout/ScrollManager";
+import WhatsAppButton from "./components/layout/WhatsAppButton";
+import HomePage from "./pages/HomePage";
+import PrivacyPage from "./pages/PrivacyPage";
 
-// 🔹 Carga inmediata del Hero (ruta principal)
-import Hero from "./components/Hero";
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const ServiceDetailPage = lazy(() => import("./pages/ServiceDetailPage"));
+const ServicesPage = lazy(() => import("./pages/ServicesPage"));
 
-// 🔹 Lazy load del resto
-const Navbar = lazy(() => import("./components/Navbar"));
-const Footer = lazy(() => import("./components/Footer"));
-const ScreenContact = lazy(() => import("./components/ScreenContact"));
-const Offer = lazy(() => import("./components/Offer"));
-const Nosotros = lazy(() => import("./components/Nosotros"));
-const ServicePage = lazy(() => import("./components/Servicepage"));
+const legacyServiceIds = {
+  "obras-civiles": "obras",
+  obras: "obras",
+  soldaduras: "soldaduras",
+  maquinaria: "maquinaria",
+  tunelera: "tunelera",
+};
 
-// 🔹 Loader visual liviano
-const Loading = () => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "100vh",
-      fontFamily: "'Poppins', sans-serif",
-      color: "#00CCE5",
-      fontWeight: "bold",
-    }}
-    role="status"
-    aria-label="Cargando contenido"
-  >
-    Cargando...
-  </div>
-);
-
-function App() {
-  return (
-    <Suspense fallback={<Loading />}>
-      <Navbar />
-
-      <Routes>
-        <Route path="/" element={<Hero />} />
-        <Route path="contacto" element={<ScreenContact />} />
-        <Route path="ofrecemos" element={<Offer />} />
-        <Route path="/servicio/:serviceId" element={<ServicePage />} />
-        <Route path="nosotros" element={<Nosotros />} />
-
-        {/* Ruta fallback (para evitar pantallas blancas en URLs no válidas) */}
-        <Route path="*" element={<Hero />} />
-      </Routes>
-
-      <Footer />
-    </Suspense>
+function LegacyServiceRedirect() {
+  const { serviceId = "" } = useParams();
+  const canonicalId = legacyServiceIds[serviceId.toLowerCase()];
+  return canonicalId ? (
+    <Navigate to={`/servicio/${canonicalId}`} replace />
+  ) : (
+    <Navigate to="/ofrecemos" replace />
   );
 }
 
-export default App;
+function RouteLoader() {
+  return (
+    <div className="route-loader" role="status" aria-label="Cargando página">
+      <span />
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <a className="skip-link" href="#main-content">
+        Saltar al contenido
+      </a>
+      <ScrollManager />
+      <Header />
+
+      <Suspense fallback={<RouteLoader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/nosotros" element={<AboutPage />} />
+          <Route path="/ofrecemos" element={<ServicesPage />} />
+          <Route path="/contacto" element={<ContactPage />} />
+          <Route path="/servicio/:serviceId" element={<ServiceDetailPage />} />
+          <Route path="/servicios" element={<Navigate to="/ofrecemos" replace />} />
+          <Route path="/servicios/:serviceId" element={<LegacyServiceRedirect />} />
+          <Route path="/privacidad" element={<PrivacyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+          
+        </Routes>
+      </Suspense>
+
+      <Footer />
+      <WhatsAppButton />
+    </>
+  );
+}

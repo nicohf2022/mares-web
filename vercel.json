@@ -4,15 +4,101 @@
     {
       "src": "package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
+      "config": {
+        "distDir": "dist"
+      }
     }
   ],
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "routes": [
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|webp|svg|gif|txt|xml))", "dest": "/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    {
+      "src": "/servicios/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/ofrecemos"
+      }
+    },
+    {
+      "src": "/servicios/obras-civiles/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/servicio/obras"
+      }
+    },
+    {
+      "src": "/servicios/obras/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/servicio/obras"
+      }
+    },
+    {
+      "src": "/servicios/soldaduras/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/servicio/soldaduras"
+      }
+    },
+    {
+      "src": "/servicios/maquinaria/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/servicio/maquinaria"
+      }
+    },
+    {
+      "src": "/servicios/tunelera/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/servicio/tunelera"
+      }
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|webp|svg|gif|txt|xml))",
+      "dest": "/$1"
+    },
+    {
+      "src": "/$",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/nosotros/?$",
+      "dest": "/nosotros/index.html"
+    },
+    {
+      "src": "/ofrecemos/?$",
+      "dest": "/ofrecemos/index.html"
+    },
+    {
+      "src": "/contacto/?$",
+      "dest": "/contacto/index.html"
+    },
+    {
+      "src": "/servicio/obras/?$",
+      "dest": "/servicio/obras/index.html"
+    },
+    {
+      "src": "/servicio/soldaduras/?$",
+      "dest": "/servicio/soldaduras/index.html"
+    },
+    {
+      "src": "/servicio/maquinaria/?$",
+      "dest": "/servicio/maquinaria/index.html"
+    },
+    {
+      "src": "/servicio/tunelera/?$",
+      "dest": "/servicio/tunelera/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/404/index.html",
+      "status": 404
+    }
   ]
 }

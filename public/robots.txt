@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap del sitio
-Sitemap: https://maresconstruccion.uy/sitemap.xml
+Sitemap: https://www.maresconstruccion.uy/sitemap.xml
